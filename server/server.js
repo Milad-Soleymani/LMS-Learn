@@ -10,6 +10,9 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
+// ! Parse incoming JSON requests
+app.use(express.json())
+
 
 // ! Set security configs
 cors({
@@ -28,4 +31,9 @@ mongoose.connect(MONGO_URI)
         (e) => { console.log(e) }
     )
 
-app.use(express.json())
+
+
+// ! Listen App
+app.listen(PORT, () => {
+    console.log('Server Is Runnig!')
+})
