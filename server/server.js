@@ -34,6 +34,15 @@ mongoose
 
 
 
+app.use((req, res, err, next) => {
+    console.log(err.stack);
+    res.status(500).json({
+        success: false,
+        message: 'Something Went Wrong',
+    });
+})
+
+
 // ! Listen App
 app.listen(PORT, () => {
     console.log('Server Is Runnig!')
