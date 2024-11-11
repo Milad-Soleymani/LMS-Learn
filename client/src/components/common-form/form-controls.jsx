@@ -1,5 +1,5 @@
 import { Label } from "@radix-ui/react-label";
-import { Select } from "@radix-ui/react-select";
+import { Select, SelectTrigger } from "@radix-ui/react-select";
 
 function FormControls({ formControls = [], formData, setFormData }) {
     function renderComponentByType(getControlItem) {
@@ -8,13 +8,20 @@ function FormControls({ formControls = [], formData, setFormData }) {
 
             case 'input':
                 element = <Input
-
+                id={getControlItem.name}
+                name={getControlItem.name}
+                placeholder={getControlItem.placeholder}
+                type={getControlItem.type}
                 />
                 break;
 
 
             case 'select':
-                element = <Select></Select>
+                element = <Select>
+                    <SelectTrigger>
+                        <SelectValue placeholder={getControlItem.label} />
+                    </SelectTrigger>
+                </Select>
                 break;
 
             case 'textarea':
